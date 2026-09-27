@@ -1,0 +1,104 @@
+User-agent: Googlebot
+Allow: /
+Allow: /api/public/og/
+
+User-agent: Bingbot
+Allow: /
+Allow: /api/public/og/
+
+User-agent: Twitterbot
+Allow: /
+Allow: /api/public/og/
+
+User-agent: facebookexternalhit
+Allow: /
+Allow: /api/public/og/
+
+# --- AI assistants and AI search crawlers ---
+
+User-agent: GPTBot
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: ChatGPT-User
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: Google-Extended
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: Claude-User
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: CCBot
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: Bytespider
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: Amazonbot
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: meta-externalagent
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /highlights
+
+User-agent: *
+Allow: /
+Allow: /api/public/og/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /highlights
+
+Sitemap: https://mybibleatlas.com/sitemap.xml

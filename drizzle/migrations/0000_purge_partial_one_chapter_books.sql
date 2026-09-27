@@ -1,0 +1,1 @@
+DELETE FROM public.chapter_cache WHERE jsonb_array_length(verses) < 2 AND book IN ('philemon','jude','obadiah','2-john','3-john');

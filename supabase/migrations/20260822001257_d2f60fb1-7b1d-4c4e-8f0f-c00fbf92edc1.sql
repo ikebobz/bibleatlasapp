@@ -1,0 +1,2 @@
+DELETE FROM public.admin_credentials WHERE id = true;
+COMMENT ON TABLE public.admin_credentials IS 'Server-only admin passcode storage (PBKDF2 hash + salt). No client access. Never write credential material in migrations - use the app reset flow.';

@@ -1,0 +1,418 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *, [data-theme="dark"] *));
+
+/*
+ * Bible Atlas design system.
+ * Warm paper light theme, deep ink dark theme.
+ * Scripture is set in a serif; interface chrome in a clean sans.
+ */
+
+/*
+ * Metric-matched fallbacks. Measured against the real webfonts so the first
+ * paint occupies the same space as the final one — the page no longer jumps
+ * when Spectral and Instrument Sans finish loading.
+ */
+@font-face {
+  font-family: "Spectral Fallback";
+  src:
+    local("Georgia"),
+    local("Times New Roman");
+  size-adjust: 111.4%;
+  ascent-override: 95.2%;
+  descent-override: 41.3%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Instrument Fallback";
+  src:
+    local("Arial"),
+    local("Helvetica");
+  size-adjust: 102.4%;
+  ascent-override: 94.7%;
+  descent-override: 24.4%;
+  line-gap-override: 0%;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --font-serif: "Spectral", "Spectral Fallback", Georgia, "Times New Roman", serif;
+  --font-sans: "Instrument Sans", "Instrument Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-connections-display: "Lora", "Spectral", "Spectral Fallback", Georgia, serif;
+  --font-connections-body: "Nunito Sans", "Instrument Sans", "Instrument Fallback", ui-sans-serif, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-parchment: var(--parchment);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-place: var(--place);
+  --color-person: var(--person);
+  --color-theme: var(--theme-token);
+  --color-event: var(--event);
+  --color-sea: var(--sea);
+  --color-land: var(--land);
+  --color-land-edge: var(--land-edge);
+  --color-route: var(--route);
+  --color-map-parchment: var(--map-parchment);
+  --color-map-parchment-deep: var(--map-parchment-deep);
+  --color-map-relief: var(--map-relief);
+  --color-map-relief-high: var(--map-relief-high);
+  --color-map-contour: var(--map-contour);
+  --color-map-coast: var(--map-coast);
+  --color-map-water-deep: var(--map-water-deep);
+  --color-map-route-past: var(--map-route-past);
+  --color-map-route-future: var(--map-route-future);
+  --color-map-route-comparison: var(--map-route-comparison);
+  --color-map-chrome: var(--map-chrome);
+  --color-map-chrome-foreground: var(--map-chrome-foreground);
+  --color-connections-gold: var(--connections-gold);
+  --color-connections-thread: var(--connections-thread);
+  --color-connections-line: var(--connections-line);
+  --color-connections-wash: var(--connections-wash);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.985 0.006 85);
+  --foreground: oklch(0.24 0.014 60);
+  --surface: oklch(0.972 0.008 85);
+  --surface-raised: oklch(1 0 0);
+  --parchment: oklch(0.978 0.01 82);
+  --ink: oklch(0.22 0.016 55);
+  --ink-soft: oklch(0.47 0.014 60);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.24 0.014 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.24 0.014 60);
+  --primary: oklch(0.46 0.084 42);
+  --primary-foreground: oklch(0.985 0.006 85);
+  --secondary: oklch(0.94 0.012 82);
+  --secondary-foreground: oklch(0.28 0.016 55);
+  --muted: oklch(0.945 0.01 82);
+  --muted-foreground: oklch(0.52 0.014 62);
+  --accent: oklch(0.93 0.03 70);
+  --accent-foreground: oklch(0.28 0.03 50);
+  --destructive: oklch(0.55 0.18 27);
+  --destructive-foreground: oklch(0.985 0.006 85);
+  --border: oklch(0.9 0.012 80);
+  --input: oklch(0.9 0.012 80);
+  --ring: oklch(0.56 0.07 45);
+  --place: oklch(0.52 0.09 195);
+  --person: oklch(0.5 0.1 40);
+  --theme-token: oklch(0.5 0.09 300);
+  --event: oklch(0.5 0.1 145);
+  --sea: oklch(0.9 0.036 220);
+  --land: oklch(0.955 0.018 85);
+  --land-edge: oklch(0.86 0.02 80);
+  --route: oklch(0.52 0.13 40);
+  --map-parchment: oklch(0.91 0.034 78);
+  --map-parchment-deep: oklch(0.81 0.045 72);
+  --map-relief: oklch(0.66 0.052 91);
+  --map-relief-high: oklch(0.54 0.055 74);
+  --map-contour: oklch(0.47 0.04 63 / 42%);
+  --map-coast: oklch(0.47 0.045 210);
+  --map-water-deep: oklch(0.67 0.074 218);
+  --map-route-past: oklch(0.43 0.13 39);
+  --map-route-future: oklch(0.5 0.025 67 / 56%);
+  --map-route-comparison: oklch(0.48 0.035 215);
+  --map-chrome: oklch(0.985 0.012 82 / 94%);
+  --map-chrome-foreground: oklch(0.25 0.027 54);
+  --connections-gold: oklch(0.53 0.1 79);
+  --connections-thread: oklch(0.44 0.07 160);
+  --connections-line: oklch(0.88 0.018 82);
+  --connections-wash: oklch(0.96 0.025 84);
+}
+
+.dark,
+[data-theme="dark"] {
+  --background: oklch(0.17 0.008 65);
+  --foreground: oklch(0.93 0.008 80);
+  --surface: oklch(0.2 0.009 65);
+  --surface-raised: oklch(0.235 0.01 65);
+  --parchment: oklch(0.185 0.008 65);
+  --ink: oklch(0.93 0.008 80);
+  --ink-soft: oklch(0.73 0.01 80);
+  --card: oklch(0.225 0.01 65);
+  --card-foreground: oklch(0.93 0.008 80);
+  --popover: oklch(0.225 0.01 65);
+  --popover-foreground: oklch(0.93 0.008 80);
+  --primary: oklch(0.78 0.09 62);
+  --primary-foreground: oklch(0.2 0.02 55);
+  --secondary: oklch(0.27 0.012 65);
+  --secondary-foreground: oklch(0.93 0.008 80);
+  --muted: oklch(0.26 0.01 65);
+  --muted-foreground: oklch(0.68 0.012 75);
+  --accent: oklch(0.3 0.026 60);
+  --accent-foreground: oklch(0.93 0.008 80);
+  --destructive: oklch(0.6 0.17 25);
+  --destructive-foreground: oklch(0.96 0.006 80);
+  --border: oklch(1 0 0 / 11%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.68 0.07 55);
+  --place: oklch(0.78 0.09 200);
+  --person: oklch(0.8 0.09 45);
+  --theme-token: oklch(0.78 0.09 300);
+  --event: oklch(0.76 0.09 150);
+  --sea: oklch(0.3 0.04 232);
+  --land: oklch(0.235 0.012 70);
+  --land-edge: oklch(0.34 0.014 70);
+  --route: oklch(0.8 0.11 55);
+  --map-parchment: oklch(0.25 0.018 72);
+  --map-parchment-deep: oklch(0.18 0.015 65);
+  --map-relief: oklch(0.38 0.034 86);
+  --map-relief-high: oklch(0.49 0.046 75);
+  --map-contour: oklch(0.78 0.035 79 / 24%);
+  --map-coast: oklch(0.62 0.07 215);
+  --map-water-deep: oklch(0.3 0.07 224);
+  --map-route-past: oklch(0.79 0.12 55);
+  --map-route-future: oklch(0.76 0.02 75 / 44%);
+  --map-route-comparison: oklch(0.72 0.055 215);
+  --map-chrome: oklch(0.19 0.014 65 / 94%);
+  --map-chrome-foreground: oklch(0.93 0.01 80);
+  --connections-gold: oklch(0.76 0.09 78);
+  --connections-thread: oklch(0.72 0.075 160);
+  --connections-line: oklch(1 0 0 / 14%);
+  --connections-wash: oklch(0.245 0.025 72);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility scripture {
+  font-family: var(--font-serif);
+  font-feature-settings: "liga" 1, "onum" 1;
+}
+
+/* Inline Atlas references: quiet by default, alive on hover. */
+@utility atlas-ref {
+  cursor: pointer;
+  border-bottom: 1px solid color-mix(in oklab, currentColor 35%, transparent);
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+  border-radius: 2px;
+  padding-inline: 1px;
+}
+
+/* Original-languages layer: every plain word becomes a lexicon trigger. */
+@utility lex-word {
+  cursor: pointer;
+  border-radius: 2px;
+  padding-inline: 0.5px;
+  border-bottom: 1px dotted color-mix(in oklab, currentColor 22%, transparent);
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease;
+}
+
+.lex-word:hover {
+  background-color: color-mix(in oklab, var(--color-primary) 12%, transparent);
+  border-bottom-color: var(--color-primary);
+}
+
+
+.quiet .atlas-ref {
+  border-bottom-color: transparent;
+  color: inherit !important;
+}
+
+@keyframes route-draw {
+  from {
+    stroke-dashoffset: var(--route-length);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes thread-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility animate-thread-reveal {
+  animation: thread-reveal 320ms ease-out both;
+}
+
+/* Reader highlights: soft washes that stay readable in both themes. */
+.hl-yellow {
+  --hl: oklch(0.88 0.15 95);
+}
+.hl-green {
+  --hl: oklch(0.84 0.15 150);
+}
+.hl-blue {
+  --hl: oklch(0.82 0.12 240);
+}
+.hl-pink {
+  --hl: oklch(0.83 0.13 5);
+}
+.hl-purple {
+  --hl: oklch(0.78 0.13 305);
+}
+
+.hl-swatch {
+  background-color: color-mix(in oklab, var(--hl) 65%, transparent);
+  border-color: color-mix(in oklab, var(--hl) 85%, transparent);
+}
+
+.verse-highlight {
+  background-color: color-mix(in oklab, var(--hl) 42%, transparent);
+  box-shadow:
+    0 0 0 2px color-mix(in oklab, var(--hl) 42%, transparent);
+  border-radius: 3px;
+}
+
+.dark .verse-highlight {
+  background-color: color-mix(in oklab, var(--hl) 26%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--hl) 26%, transparent);
+}
+
+.verse-active {
+  background-color: color-mix(in oklab, var(--color-primary) 12%, transparent);
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-primary) 12%, transparent);
+}
+
+/* --- Focus verse reading mode ------------------------------------------- */
+
+/* Clears the sticky header (3.5rem) plus breathing room above the verse. */
+.verse-focus {
+  scroll-margin-top: 8rem;
+  scroll-margin-bottom: 6rem;
+  background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--color-primary) 10%, transparent),
+    -0.45rem 0 0 0 color-mix(in oklab, var(--color-primary) 70%, transparent);
+  border-radius: 3px;
+  font-weight: 500;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: verse-focus-in 320ms ease-out both;
+  outline: none;
+}
+
+.dark .verse-focus {
+  background-color: color-mix(in oklab, var(--color-primary) 20%, transparent);
+  box-shadow:
+    0 0 0 3px color-mix(in oklab, var(--color-primary) 20%, transparent),
+    -0.45rem 0 0 0 color-mix(in oklab, var(--color-primary) 80%, transparent);
+}
+
+@keyframes verse-focus-in {
+  from {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
+
+/* Briefly subdues the surrounding verses so the focal point reads first. */
+.verse-dim-context > span:not(.verse-focus) {
+  opacity: 0.62;
+  transition: opacity 260ms ease-out;
+}
+
+.verse-dim-context > span.verse-focus {
+  transition: opacity 260ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .verse-focus {
+    animation: none;
+  }
+  .verse-dim-context > span:not(.verse-focus) {
+    opacity: 1;
+    transition: none;
+  }
+  .animate-thread-reveal {
+    animation: none;
+  }
+}
+
+
+/* Mapbox atlas: keep zoom controls clear of the floating chrome. */
+.atlas-mapbox .mapboxgl-ctrl-top-left {
+  top: 5rem;
+  left: 0.75rem;
+}
+@media (min-width: 640px) {
+  .atlas-mapbox .mapboxgl-ctrl-top-left {
+    left: 1.25rem;
+  }
+}
+.atlas-mapbox .mapboxgl-ctrl-attrib {
+  font-size: 10px;
+}
+
+@keyframes chapter-next { from { opacity: 0.4; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+@keyframes chapter-prev { from { opacity: 0.4; transform: translateX(-24px); } to { opacity: 1; transform: none; } }
+.animate-chapter-next { animation: chapter-next 150ms ease-out; }
+.animate-chapter-prev { animation: chapter-prev 150ms ease-out; }
+@media (prefers-reduced-motion: reduce) { .animate-chapter-next, .animate-chapter-prev { animation: none; } }
+
+/* Search fields show one clear button — ours — not the browser's as well. */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+

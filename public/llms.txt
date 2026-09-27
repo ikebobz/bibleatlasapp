@@ -1,0 +1,40 @@
+# Bible Atlas
+
+> Read the Bible with context. Bible Atlas is a free, public web app that pairs the
+> full 66-book Bible with interactive maps, journeys, timelines, a concordance and
+> thematic connections between passages. No sign-up required; every page is public
+> and server-rendered HTML.
+
+Site: https://mybibleatlas.com
+
+## Main pages
+
+- [Bible reader (home)](https://mybibleatlas.com/): read any book, chapter and verse
+- [About Bible Atlas](https://mybibleatlas.com/about): what the product is, screenshots, FAQ
+- [Interactive Bible maps](https://mybibleatlas.com/journeys): hub of journey maps
+- [Abraham's journey](https://mybibleatlas.com/journeys/abraham)
+- [Paul's missionary journeys](https://mybibleatlas.com/journeys/paul)
+- [Bible timeline](https://mybibleatlas.com/timeline)
+- [Concordance](https://mybibleatlas.com/concordance): word study across the KJV
+- [Connections](https://mybibleatlas.com/connections): themes traced across Scripture
+- [What's new](https://mybibleatlas.com/whats-new)
+
+## URL patterns
+
+- Book: `https://mybibleatlas.com/{book}` — e.g. /genesis, /john
+- Chapter: `https://mybibleatlas.com/{book}/{chapter}` — e.g. /john/3
+- Verse: `https://mybibleatlas.com/{book}/{chapter}/{verse}` — e.g. /john/3/16
+- Concordance term: `https://mybibleatlas.com/concordance/{term}` — e.g. /concordance/faith
+- Connection node: `https://mybibleatlas.com/connections/{node}`
+
+Full URL list: https://mybibleatlas.com/sitemap.xml
+
+## Translations
+
+Public-domain translations only: KJV (default), WEB, ASV, YLT and several
+non-English editions. Licensed translations (NIV, NKJV, AMP) are not included.
+
+## Not for crawling
+
+- /admin/ — private administration pages
+- /highlights — device-local personal data

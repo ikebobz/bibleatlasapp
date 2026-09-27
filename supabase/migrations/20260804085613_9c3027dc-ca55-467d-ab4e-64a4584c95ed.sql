@@ -1,0 +1,1 @@
+DELETE FROM public.ai_rate_limit WHERE bucket LIKE 'admin-unlock:%';
