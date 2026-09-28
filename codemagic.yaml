@@ -1,0 +1,32 @@
+workflows:
+  ios-capacitor-debug:
+    name: iOS Capacitor Build & Debug
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      node: 18.x
+      xcode: latest
+      cocoapods: default
+    scripts:
+      - name: Install Node dependencies
+        script: |
+          npm install
+      - name: Build Web App
+        script: |
+          npm run build
+      - name: Sync Capacitor iOS
+        script: |
+          npx cap sync ios
+      - name: Install Pods (if applicable)
+        script: |
+          cd ios/App && pod install || true
+      - name: Build iOS App (.app / .ipa)
+        script: |
+          xcodebuild -project ios/App/App.xcodeproj \
+                     -scheme App \
+                     -sdk iphonesimulator \
+                     -configuration Debug \
+                     CODE_SIGN_IDENTITY="" \
+                     CODE_SIGNING_REQUIRED=NO \
+                     CODE_SIGNING_ALLOWED=NO \
+                     build
