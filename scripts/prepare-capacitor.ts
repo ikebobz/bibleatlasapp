@@ -44,6 +44,11 @@ const indexHtmlPath = path.join(publicDir, "index.html");
 fs.writeFileSync(indexHtmlPath, indexHtmlContent, "utf8");
 console.log(`✓ Generated ${indexHtmlPath} for Capacitor SPA entry point.`);
 
+// Pass --no-sync (e.g. on CI) to only generate index.html and skip "npx cap sync".
+if (process.argv.includes("--no-sync")) {
+  process.exit(0);
+}
+
 console.log("Syncing native Capacitor platforms...");
 try {
   execSync("npx cap sync", { stdio: "inherit" });
