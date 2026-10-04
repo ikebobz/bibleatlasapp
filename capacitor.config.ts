@@ -5,6 +5,10 @@ const config: CapacitorConfig = {
   appName: "Bible Atlas",
   webDir: ".output/public",
   server: {
+    // Bible Atlas is a server-rendered TanStack Start app (pages and data come
+    // from server functions), so the native shell loads the live site instead
+    // of a static bundle. A static index.html only shows a blank white screen.
+    url: "https://mybibleatlas.com",
     androidScheme: "https",
     iosScheme: "https",
   },
